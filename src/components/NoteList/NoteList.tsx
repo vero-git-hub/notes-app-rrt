@@ -1,5 +1,15 @@
 import React from 'react';
-import Table from '../Table';
+import TableTemplate from '../TableTemplate';
+
+interface Note {
+    id: number;
+    title: string;
+    content: string;
+}
+
+interface NoteListProps {
+    notes: Note[];
+}
 
 const NoteList: React.FC = () => {
     const notes = [
@@ -39,7 +49,7 @@ const NoteList: React.FC = () => {
         ),
     }));
 
-    return <Table columns={columns} data={data} />;
+    return <TableTemplate columns={columns} data={data} />;
 };
 
 export default NoteList;

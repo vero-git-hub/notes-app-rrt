@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from '../Table';
+import TableTemplate from '../TableTemplate';
 
 const SummaryTable: React.FC = () => {
     const summaries = [
@@ -23,7 +23,7 @@ const SummaryTable: React.FC = () => {
 
     const data = summaries;
 
-    return <Table columns={columns} data={data} />;
+    return <TableTemplate columns={columns} data={data} />;
 };
 
 export default SummaryTable;
