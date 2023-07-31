@@ -1,22 +1,20 @@
 import React from 'react';
 import './App.css';
-import NoteList from './components/NoteList';
-import SummaryTable from './components/SummaryTable';
-import ArchiveList from "./components/ArchiveList";
-import ButtonComponent from './components/ButtonComponent';
+import { useSelector } from 'react-redux';
+import { AppState } from './redux/types';
 
-
-const App: React.FC = () => {
-  return (
-      <div>
-        <h1>My App</h1>
-        <NoteList />
-          <ButtonComponent />
-        <SummaryTable />
-        <ArchiveList />
-
-      </div>
-  );
+const App = () => {
+    const notes = useSelector((state: AppState) => state.notes);
+    return (
+        <div>
+            {notes.map((note) => (
+                <div key={note.id}>
+                    <h3>{note.title}</h3>
+                    <p>{note.content}</p>
+                </div>
+            ))}
+        </div>
+    );
 };
 
 export default App;
