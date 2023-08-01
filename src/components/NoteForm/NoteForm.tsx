@@ -9,6 +9,26 @@ interface NoteFormProps {
     closeModal: () => void;
 }
 
+const formatCurrentDate = (date: Date) => {
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Intl.DateTimeFormat('en-US', options).format(date);
+};
+
+const formatDate = (content: string): string => {
+    const dateRegex = /(\d{1,2}\/\d{1,2}\/\d{4})/g;
+    const findDates = content.match(dateRegex);
+    let formattedDates: string = "";
+
+    if (findDates) {
+        formattedDates = findDates.join(', ');
+    }
+
+    return formattedDates;
+};
+
+const currentDate = new Date();
+const formattedDate = formatCurrentDate(currentDate);
+
 const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
     const [formData, setFormData] = useState({
         name: '',
@@ -26,12 +46,13 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const contentForm = formData.content;
         const newNote: Note = {
             name: formData.name,
             category: formData.category,
-            content: formData.content,
-            created: '',
-            dates: '',
+            content: contentForm,
+            created: formattedDate,
+            dates: formatDate(contentForm),
         };
 
         addNote(newNote);
