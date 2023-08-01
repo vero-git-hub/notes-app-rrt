@@ -1,5 +1,13 @@
-import { AppState } from './types';
-import { ADD_NOTE } from './actions';
+import {AppState, Note} from './types';
+import { ADD_NOTE, DELETE_NOTE } from './actions';
+
+const generateUniqueId = (() => {
+    let counter = 0;
+    return () => {
+        counter += 1;
+        return counter;
+    };
+})();
 
 const formatCurrentDate = (date: Date) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -27,6 +35,7 @@ const formattedDates: string = formatDate(content);
 const initialState: AppState = {
     notes: [
         {
+            id: generateUniqueId(),
             name: "Dentist",
             created: formattedDate,
             category: "Task",
@@ -39,9 +48,26 @@ const initialState: AppState = {
 const reducer = (state: AppState = initialState, action: any) => {
     switch (action.type) {
         case ADD_NOTE:
+            const newNoteId = generateUniqueId();
+
+            const newNote: Note = {
+                id: newNoteId,
+                name: action.payload.name,
+                created: formattedDate,
+                category: action.payload.category,
+                content: action.payload.content,
+                dates: formattedDates,
+            };
+
             return {
                 ...state,
-                notes: [...state.notes, action.payload],
+                notes: [...state.notes, newNote],
+            };
+
+        case DELETE_NOTE:
+            return {
+                ...state,
+                notes: state.notes.filter((note) => note.id !== action.payload.noteId),
             };
 
         default:

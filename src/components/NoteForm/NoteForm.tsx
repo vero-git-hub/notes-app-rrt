@@ -48,6 +48,7 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
         event.preventDefault();
         const contentForm = formData.content;
         const newNote: Note = {
+            id: 0,
             name: formData.name,
             category: formData.category,
             content: contentForm,
