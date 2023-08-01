@@ -17,7 +17,7 @@ const ButtonComponent: React.FC = () => {
             <Modal isOpen={modalOpen} toggle={toggleModal}>
                 <ModalHeader toggle={toggleModal}>Create a new note</ModalHeader>
                 <ModalBody>
-                    <NoteForm />
+                    <NoteForm closeModal={toggleModal}/>
                 </ModalBody>
                 <ModalFooter>
                     <Button color="secondary" onClick={toggleModal}>Cancel</Button>

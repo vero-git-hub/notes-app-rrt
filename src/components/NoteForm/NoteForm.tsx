@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { addNote } from '../../redux/actions';
+import { Note } from '../../redux/types';
 
-const NoteForm: React.FC = () => {
+interface NoteFormProps {
+    addNote: (note: Note) => void;
+    closeModal: () => void;
+}
+
+const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
     const [formData, setFormData] = useState({
         name: '',
         category: 'Task',
@@ -18,7 +26,16 @@ const NoteForm: React.FC = () => {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('Form data:', formData);
+        const newNote: Note = {
+            name: formData.name,
+            category: formData.category,
+            content: formData.content,
+            created: '',
+            dates: '',
+        };
+
+        addNote(newNote);
+        closeModal();
     };
 
     return (
@@ -64,4 +81,4 @@ const NoteForm: React.FC = () => {
     );
 };
 
-export default NoteForm;
+export default connect(null, { addNote })(NoteForm);
