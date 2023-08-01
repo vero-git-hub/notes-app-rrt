@@ -8,9 +8,13 @@ const App = () => {
     return (
         <div>
             {notes.map((note) => (
-                <div key={note.id}>
-                    <h3>{note.title}</h3>
+                <div>
+                    <h3>{note.name}</h3>
+                    <p>{note.created}</p>
+                    <p>{note.category}</p>
                     <p>{note.content}</p>
+                    <p>{note.dates}</p>
+                    <p>{note.icons}</p>
                 </div>
             ))}
         </div>
