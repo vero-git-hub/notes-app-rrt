@@ -48,11 +48,7 @@ const NoteList: React.FC = () => {
             <h2>List of notes</h2>
             <TableTemplate columns={columns} data={data} />
             <ButtonComponent />
-            <EditNoteModal
-                isOpen={modalOpen}
-                toggleModal={() => toggleModal(null)}
-                selectedNoteId={selectedNoteId}
-            />
+            <EditNoteModal isOpen={modalOpen} toggleModal={() => toggleModal(null)} selectedNoteId={selectedNoteId} />
         </div>
     );
 };
