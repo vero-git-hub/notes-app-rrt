@@ -1,22 +1,11 @@
 import React from 'react';
 import './App.css';
-import { useSelector } from 'react-redux';
-import { AppState } from './redux/types';
+import NoteList from './components/NoteList';
 
-const App = () => {
-    const notes = useSelector((state: AppState) => state.notes);
+const App: React.FC = () => {
     return (
         <div>
-            {notes.map((note) => (
-                <div>
-                    <h3>{note.name}</h3>
-                    <p>{note.created}</p>
-                    <p>{note.category}</p>
-                    <p>{note.content}</p>
-                    <p>{note.dates}</p>
-                    <p>{note.icons}</p>
-                </div>
-            ))}
+            <NoteList />
         </div>
     );
 };

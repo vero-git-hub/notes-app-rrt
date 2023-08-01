@@ -1,33 +1,12 @@
 import React from 'react';
 import TableTemplate from '../TableTemplate';
-
-interface Note {
-    id: number;
-    title: string;
-    content: string;
-}
-
-interface NoteListProps {
-    notes: Note[];
-}
+import { useSelector } from 'react-redux';
+import { AppState } from '../../redux/types';
+import ButtonComponent from "../ButtonComponent";
+import { ImPencil, ImBin, ImDownload} from "react-icons/im";
 
 const NoteList: React.FC = () => {
-    const notes = [
-        {
-            name: 'Row 1, Column 1',
-            created: 'Row 1, Column 2',
-            category: 'Row 1, Column 3',
-            content: 'Row 1, Column 4',
-            dates: 'Row 1, Column 5',
-        },
-        {
-            name: 'Row 2, Column 1',
-            created: 'Row 2, Column 2',
-            category: 'Row 2, Column 3',
-            content: 'Row 2, Column 4',
-            dates: 'Row 2, Column 5',
-        },
-    ];
+    const notes = useSelector((state: AppState) => state.notes);
 
     const columns = [
         { label: 'Name', field: 'name' },
@@ -35,21 +14,27 @@ const NoteList: React.FC = () => {
         { label: 'Category', field: 'category' },
         { label: 'Content', field: 'content' },
         { label: 'Dates', field: 'dates' },
-        { label: 'Actions', field: 'actions' },
+        { label: 'Actions', field: 'icons' },
     ];
 
     const data = notes.map((note) => ({
         ...note,
-        actions: (
+        icons: (
             <>
-                <i className="bi bi-pencil-square"></i>
-                <i className="bi bi-archive-fill"></i>
-                <i className="bi bi-trash-fill"></i>
+                <span><ImPencil /></span>
+                <span><ImDownload /></span>
+                <span><ImBin /></span>
             </>
         ),
     }));
 
-    return <TableTemplate columns={columns} data={data} />;
+    return (
+        <div>
+            <h2>List of notes</h2>
+            <TableTemplate columns={columns} data={data} />
+            <ButtonComponent />
+        </div>
+    );
 };
 
 export default NoteList;

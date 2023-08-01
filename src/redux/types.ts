@@ -4,7 +4,6 @@ export interface Note {
     category: string;
     content: string;
     dates: string;
-    icons: string;
 }
 
 export interface AppState {
