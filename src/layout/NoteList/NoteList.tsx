@@ -1,21 +1,27 @@
 import React, {useState} from 'react';
-import TableComponent from '../TableComponent';
+import TableComponent from '../../components/TableComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState} from '../../redux/types';
-import ButtonComponent from "../ButtonComponent";
 import { ImPencil, ImBin, ImDownload } from "react-icons/im";
 import { deleteNote, archiveNote } from '../../redux/actions';
-import EditNoteModal from '../EditNoteModal/EditNoteModal';
+import EditNoteModal from '../../components/EditNoteModal/EditNoteModal';
+import {Button} from "reactstrap";
+import CreateNoteModal from '../../components/CreateNoteModal/CreateNoteModal';
 
 const NoteList: React.FC = () => {
     const notes = useSelector((state: AppState) => state.notes);
     const dispatch = useDispatch();
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [createModalOpen, setCreateModalOpen] = useState(false);
+    const [editModalOpen, setEditModalOpen] = useState(false);
     const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
 
-    const toggleModal = (noteId: number | null) => {
-        setModalOpen((prevState) => !prevState);
+    const toggleCreateModal = () => {
+        setCreateModalOpen(!createModalOpen);
+    };
+
+    const toggleEditModal = (noteId: number | null) => {
+        setEditModalOpen((prevState) => !prevState);
         setSelectedNoteId(noteId);
     };
 
@@ -32,7 +38,7 @@ const NoteList: React.FC = () => {
         ...note,
         icons: (
             <>
-                <span><ImPencil onClick={() => toggleModal(note.id)} /></span>
+                <span><ImPencil onClick={() => toggleEditModal(note.id)} /></span>
                 <span><ImDownload onClick={() => handleArchive(note.id)}/></span>
                 <span><ImBin onClick={() => handleDelete(note.id)} /></span>
             </>
@@ -51,8 +57,11 @@ const NoteList: React.FC = () => {
         <div>
             <h2>List of notes</h2>
             <TableComponent columns={columns} data={data} />
-            <ButtonComponent />
-            <EditNoteModal isOpen={modalOpen} toggleModal={() => toggleModal(null)} selectedNoteId={selectedNoteId} />
+            <Button
+                color="primary" onClick={toggleCreateModal}>Create Note
+            </Button>
+            <CreateNoteModal isOpen={createModalOpen} toggleModal={toggleCreateModal} />
+            <EditNoteModal isOpen={editModalOpen} toggleModal={() => toggleEditModal(null)} selectedNoteId={selectedNoteId} />
         </div>
     );
 };

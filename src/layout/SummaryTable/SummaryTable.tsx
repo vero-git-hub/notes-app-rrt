@@ -1,5 +1,5 @@
 import React from 'react';
-import TableComponent from '../TableComponent';
+import TableComponent from '../../components/TableComponent';
 import {AppState} from "../../redux/types";
 import {useSelector} from "react-redux";
 
@@ -54,7 +54,12 @@ const SummaryTable: React.FC = () => {
         id: index + 1,
     }));
 
-    return <TableComponent columns={columns} data={data} />;
+    return (
+        <div>
+            <h2>Summary Table</h2>
+            <TableComponent columns={columns} data={data} />
+        </div>
+    );
 };
 
 export default SummaryTable;

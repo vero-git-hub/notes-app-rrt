@@ -1,5 +1,6 @@
 import {AppState, Note} from './types';
 import {ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, ARCHIVE_NOTE, MOVE_NOTE_FROM_ARCHIVE} from './actions';
+import { formatDate, formatCurrentDate } from '../utils/utils';
 
 const generateUniqueId = (() => {
     let counter = 0;
@@ -8,23 +9,6 @@ const generateUniqueId = (() => {
         return counter;
     };
 })();
-
-const formatCurrentDate = (date: Date) => {
-    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Intl.DateTimeFormat('en-US', options).format(date);
-};
-
-const formatDate = (content: string): string => {
-    const dateRegex = /(\d{1,2}\/\d{1,2}\/\d{4})/g;
-    const findDates = content.match(dateRegex);
-    let formattedDates: string = "";
-
-    if (findDates) {
-        formattedDates = findDates.join(', ');
-    }
-
-    return formattedDates;
-};
 
 const currentDate = new Date();
 const formattedDate = formatCurrentDate(currentDate);

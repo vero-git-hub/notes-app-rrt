@@ -1,5 +1,5 @@
 import React from 'react';
-import TableComponent from '../TableComponent';
+import TableComponent from '../../components/TableComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState, Note} from '../../redux/types';
 import {ImUpload} from "react-icons/im";

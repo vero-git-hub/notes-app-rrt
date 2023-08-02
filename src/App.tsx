@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import NoteList from './components/NoteList';
-import ArchiveList from "./components/ArchiveList";
-import SummaryTable from "./components/SummaryTable";
+import NoteList from './layout/NoteList';
+import ArchiveList from "./layout/ArchiveList";
+import SummaryTable from "./layout/SummaryTable";
 
 const App: React.FC = () => {
     return (
