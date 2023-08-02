@@ -6,7 +6,7 @@ interface TableProps {
     data: Record<string, any>[];
 }
 
-const TableTemplate: React.FC<TableProps> = ({ columns, data }) => {
+const TableComponent: React.FC<TableProps> = ({ columns, data }) => {
     return (
         <Table striped>
             <thead>
@@ -29,4 +29,4 @@ const TableTemplate: React.FC<TableProps> = ({ columns, data }) => {
     );
 };
 
-export default TableTemplate;
+export default TableComponent;

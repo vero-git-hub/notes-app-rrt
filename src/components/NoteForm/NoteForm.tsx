@@ -4,6 +4,17 @@ import { connect } from 'react-redux';
 import { addNote } from '../../redux/actions';
 import { Note } from '../../redux/types';
 
+interface NoteFormData {
+    name: string;
+    category: string;
+    content: string;
+}
+
+interface FormErrors {
+    name?: string | undefined;
+    content?: string | undefined;
+}
+
 interface NoteFormProps {
     addNote: (note: Note) => void;
     closeModal: () => void;
@@ -36,16 +47,33 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
         content: '',
     });
 
+    const [formErrors, setFormErrors] = useState<FormErrors>({
+        name: '',
+        content: '',
+    });
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = event.target;
         setFormData({
             ...formData,
             [name]: value,
         });
+
+        setFormErrors({
+            ...formErrors,
+            [name]: '',
+        });
     };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const errors = validateForm(formData);
+        if (Object.keys(errors).length > 0) {
+            setFormErrors(errors);
+            return;
+        }
+
         const contentForm = formData.content;
         const newNote: Note = {
             id: 0,
@@ -60,6 +88,20 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
         closeModal();
     };
 
+    const validateForm = (data: NoteFormData): FormErrors => {
+        const errors: FormErrors = {};
+
+        if (!data.name.trim()) {
+            errors.name = 'Name is required';
+        }
+
+        if (!data.content.trim()) {
+            errors.content = 'Content is required';
+        }
+
+        return errors;
+    };
+
     return (
         <Form onSubmit={handleSubmit}>
             <FormGroup>
@@ -71,7 +113,9 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     placeholder="...enter note title"
                     type="text"
                     onChange={handleChange}
+                    required
                 />
+                {formErrors.name && <span style={{ color: 'red' }}>{formErrors.name}</span>}
             </FormGroup>
             <FormGroup>
                 <Label for="category">Category</Label>
@@ -96,9 +140,11 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     placeholder="...write about this"
                     type="textarea"
                     onChange={handleChange}
+                    required
                 />
+                {formErrors.name && <span style={{ color: 'red' }}>{formErrors.name}</span>}
             </FormGroup>
-            <Button>Submit</Button>
+            <Button color="primary">Submit</Button>
         </Form>
     );
 };

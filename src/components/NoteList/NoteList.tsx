@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import TableTemplate from '../TableTemplate';
+import TableComponent from '../TableComponent';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState} from '../../redux/types';
 import ButtonComponent from "../ButtonComponent";
@@ -50,7 +50,7 @@ const NoteList: React.FC = () => {
     return (
         <div>
             <h2>List of notes</h2>
-            <TableTemplate columns={columns} data={data} />
+            <TableComponent columns={columns} data={data} />
             <ButtonComponent />
             <EditNoteModal isOpen={modalOpen} toggleModal={() => toggleModal(null)} selectedNoteId={selectedNoteId} />
         </div>
