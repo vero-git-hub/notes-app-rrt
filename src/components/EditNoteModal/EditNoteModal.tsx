@@ -10,6 +10,18 @@ interface EditNoteModalProps {
     selectedNoteId: number | null;
 }
 
+const formatDate = (content: string): string => {
+    const dateRegex = /(\d{1,2}\/\d{1,2}\/\d{4})/g;
+    const findDates = content.match(dateRegex);
+    let formattedDates: string = "";
+
+    if (findDates) {
+        formattedDates = findDates.join(', ');
+    }
+
+    return formattedDates;
+};
+
 const EditNoteModal: React.FC<EditNoteModalProps> = ({isOpen, toggleModal, selectedNoteId}) => {
     const [updatedData, setUpdatedData] = useState({ name: '', category: '', content: '' });
     const dispatch = useDispatch();
@@ -23,11 +35,13 @@ const EditNoteModal: React.FC<EditNoteModalProps> = ({isOpen, toggleModal, selec
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        const contentForNewNote = formData.get('content');
         const updatedNote: Note = {
             ...note,
             name: formData.get('name') as string,
             category: formData.get('category') as string,
             content: formData.get('content') as string,
+            dates: formatDate(contentForNewNote as string) as string,
         };
         console.log('Updated note:', updatedNote);
         dispatch(updateNote(updatedNote));
