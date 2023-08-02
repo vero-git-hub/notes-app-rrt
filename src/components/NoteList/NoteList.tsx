@@ -3,8 +3,8 @@ import TableTemplate from '../TableTemplate';
 import {useDispatch, useSelector} from 'react-redux';
 import {AppState} from '../../redux/types';
 import ButtonComponent from "../ButtonComponent";
-import { ImPencil, ImBin, ImDownload} from "react-icons/im";
-import { deleteNote } from '../../redux/actions';
+import { ImPencil, ImBin, ImDownload } from "react-icons/im";
+import { deleteNote, archiveNote } from '../../redux/actions';
 import EditNoteModal from '../EditNoteModal/EditNoteModal';
 
 const NoteList: React.FC = () => {
@@ -33,7 +33,7 @@ const NoteList: React.FC = () => {
         icons: (
             <>
                 <span><ImPencil onClick={() => toggleModal(note.id)} /></span>
-                <span><ImDownload /></span>
+                <span><ImDownload onClick={() => handleArchive(note.id)}/></span>
                 <span><ImBin onClick={() => handleDelete(note.id)} /></span>
             </>
         ),
@@ -41,6 +41,10 @@ const NoteList: React.FC = () => {
 
     const handleDelete = (noteId: number) => {
         dispatch(deleteNote(noteId));
+    };
+
+    const handleArchive  = (noteId: number) => {
+        dispatch(archiveNote(noteId));
     };
 
     return (

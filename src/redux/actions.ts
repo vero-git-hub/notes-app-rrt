@@ -3,6 +3,7 @@ import {Note} from "./types";
 export const ADD_NOTE = 'ADD_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
+export const ARCHIVE_NOTE = 'ARCHIVE_NOTE';
 
 
 export const addNote = (noteData: Note) => ({
@@ -20,6 +21,11 @@ export const deleteNote = (noteId: number): DeleteNoteAction => ({
 export const updateNote = (note: Note) => ({
     type: UPDATE_NOTE,
     payload: note,
+});
+
+export const archiveNote = (noteId: number) => ({
+    type: ARCHIVE_NOTE,
+    payload: { noteId },
 });
 
 export interface DeleteNoteAction {

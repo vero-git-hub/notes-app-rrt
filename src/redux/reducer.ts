@@ -1,5 +1,5 @@
 import {AppState, Note} from './types';
-import {ADD_NOTE, DELETE_NOTE, UPDATE_NOTE} from './actions';
+import {ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, ARCHIVE_NOTE} from './actions';
 
 const generateUniqueId = (() => {
     let counter = 0;
@@ -42,6 +42,7 @@ const initialState: AppState = {
             dates: formatDate(content),
         },
     ],
+    archivedNotes: [],
 };
 
 const reducer = (state: AppState = initialState, action: any) => {
@@ -79,9 +80,29 @@ const reducer = (state: AppState = initialState, action: any) => {
                 ),
             };
 
+        case ARCHIVE_NOTE:
+            return handleArchiveNote(state, action.payload.noteId);
+
         default:
             return state;
     }
+};
+
+const handleArchiveNote = (state: AppState, noteId: number) => {
+    const noteToArchive = state.notes.find((note) => note.id === noteId);
+
+    if (!noteToArchive) {
+        return state;
+    }
+
+    const updatedNotes = state.notes.filter((note) => note.id !== noteId);
+    const updatedArchivedNotes = [...state.archivedNotes, { ...noteToArchive, archived: true }];
+
+    return {
+        ...state,
+        notes: updatedNotes,
+        archivedNotes: updatedArchivedNotes,
+    };
 };
 
 export default reducer;
