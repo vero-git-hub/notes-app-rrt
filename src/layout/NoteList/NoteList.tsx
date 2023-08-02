@@ -5,7 +5,7 @@ import {AppState} from '../../redux/types';
 import { ImPencil, ImBin, ImDownload } from "react-icons/im";
 import { deleteNote, archiveNote } from '../../redux/actions';
 import EditNoteModal from '../../components/EditNoteModal/EditNoteModal';
-import {Button} from "reactstrap";
+import {Button, Col, Container, Row} from "reactstrap";
 import CreateNoteModal from '../../components/CreateNoteModal/CreateNoteModal';
 
 const NoteList: React.FC = () => {
@@ -38,9 +38,9 @@ const NoteList: React.FC = () => {
         ...note,
         icons: (
             <>
-                <span><ImPencil onClick={() => toggleEditModal(note.id)} /></span>
-                <span><ImDownload onClick={() => handleArchive(note.id)}/></span>
-                <span><ImBin onClick={() => handleDelete(note.id)} /></span>
+                <span className="iconActions"><ImPencil onClick={() => toggleEditModal(note.id)} /></span>
+                <span className="iconActions"><ImDownload onClick={() => handleArchive(note.id)}/></span>
+                <span className="iconActions"><ImBin onClick={() => handleDelete(note.id)} /></span>
             </>
         ),
     }));
@@ -54,15 +54,17 @@ const NoteList: React.FC = () => {
     };
 
     return (
-        <div>
+        <Container>
             <h2>List of notes</h2>
             <TableComponent columns={columns} data={data} />
-            <Button
-                color="primary" onClick={toggleCreateModal}>Create Note
-            </Button>
+            <div className="createBtnDiv">
+                <Button color="primary" onClick={toggleCreateModal}>
+                    Create Note
+                </Button>
+            </div>
             <CreateNoteModal isOpen={createModalOpen} toggleModal={toggleCreateModal} />
             <EditNoteModal isOpen={editModalOpen} toggleModal={() => toggleEditModal(null)} selectedNoteId={selectedNoteId} />
-        </div>
+        </Container>
     );
 };
 

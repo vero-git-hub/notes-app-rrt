@@ -3,6 +3,7 @@ import TableComponent from '../../components/TableComponent';
 import {AppState} from "../../redux/types";
 import {useSelector} from "react-redux";
 import { CATEGORY_NAMES } from '../constants';
+import {Container} from "reactstrap";
 
 
 const SummaryTable: React.FC = () => {
@@ -57,10 +58,10 @@ const SummaryTable: React.FC = () => {
     }));
 
     return (
-        <div>
+        <Container>
             <h2>Summary Table</h2>
             <TableComponent columns={columns} data={data} />
-        </div>
+        </Container>
     );
 };
 

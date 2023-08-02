@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppState, Note} from '../../redux/types';
 import {ImUpload} from "react-icons/im";
 import { moveNoteFromArchive } from '../../redux/actions';
+import {Container} from "reactstrap";
 
 
 const ArchiveList: React.FC = () => {
@@ -33,10 +34,10 @@ const ArchiveList: React.FC = () => {
     }));
 
     return (
-        <div>
+        <Container>
             <h2>Archive Table</h2>
             <TableComponent columns={columns} data={data} />
-        </div>
+        </Container>
     );
 };
 
