@@ -4,6 +4,7 @@ export const ADD_NOTE = 'ADD_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const ARCHIVE_NOTE = 'ARCHIVE_NOTE';
+export const MOVE_NOTE_FROM_ARCHIVE = 'MOVE_NOTE_FROM_ARCHIVE';
 
 
 export const addNote = (noteData: Note) => ({
@@ -34,3 +35,17 @@ export interface DeleteNoteAction {
         noteId: number;
     };
 }
+
+export interface MoveNoteFromArchiveAction {
+    type: typeof MOVE_NOTE_FROM_ARCHIVE;
+    payload: {
+        noteId: number;
+    };
+}
+
+export const moveNoteFromArchive = (noteId: number): MoveNoteFromArchiveAction => ({
+    type: MOVE_NOTE_FROM_ARCHIVE,
+    payload: {
+        noteId,
+    },
+});

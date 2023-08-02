@@ -1,11 +1,14 @@
 import React from 'react';
 import TableTemplate from '../TableTemplate';
-import { useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AppState, Note} from '../../redux/types';
 import {ImUpload} from "react-icons/im";
+import { moveNoteFromArchive } from '../../redux/actions';
+
 
 const ArchiveList: React.FC = () => {
     const archivedNotes = useSelector((state: AppState) => state.archivedNotes);
+    const dispatch = useDispatch();
 
     const columns = [
         { label: 'Name', field: 'name' },
@@ -15,11 +18,16 @@ const ArchiveList: React.FC = () => {
         { label: 'Dates', field: 'dates' },
         { label: 'Actions', field: 'icons' },
     ];
+
+    const handleMoveNoteFromArchive = (noteId: number) => {
+        dispatch(moveNoteFromArchive(noteId));
+    };
+
     const data = archivedNotes.map((note: Note) => ({
         ...note,
         icons: (
             <>
-                <ImUpload />
+                <ImUpload onClick={() => handleMoveNoteFromArchive(note.id)}/>
             </>
         )
     }));
