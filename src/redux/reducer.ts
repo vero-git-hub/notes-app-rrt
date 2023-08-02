@@ -15,12 +15,63 @@ const currentDate = new Date();
 const formattedDate = formatCurrentDate(currentDate);
 
 const content: string = "I’m gonna have a dentist appointment on the 3/5/2021, I moved it from 5/5/2021";
+const content1: string = "I started programming on 14/02/1946 and continue to this day 02/08/2023";
+const content2: string = "A walk to the movies";
+const content3: string = "";
 
 const initialState: AppState = {
     notes: [
         {
             id: generateUniqueId(),
             name: "Dentist",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content,
+            dates: formatDate(content),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Programming",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content1,
+            dates: formatDate(content1),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Walk",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content2,
+            dates: formatDate(content2),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Programming",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content3,
+            dates: formatDate(content3),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Programming",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content,
+            dates: formatDate(content),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Programming",
+            created: formattedDate,
+            category: CATEGORY_NAMES.TASK,
+            content: content,
+            dates: formatDate(content),
+        },
+        {
+            id: generateUniqueId(),
+            name: "Programming",
             created: formattedDate,
             category: CATEGORY_NAMES.TASK,
             content: content,

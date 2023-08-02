@@ -4,9 +4,9 @@ import {useDispatch, useSelector} from 'react-redux';
 import {AppState} from '../../redux/types';
 import { ImPencil, ImBin, ImDownload } from "react-icons/im";
 import { deleteNote, archiveNote } from '../../redux/actions';
-import EditNoteModal from '../../components/EditNoteModal/EditNoteModal';
+import EditNoteModal from '../../components/modal/EditNoteModal/EditNoteModal';
 import {Button, Col, Container, Row} from "reactstrap";
-import CreateNoteModal from '../../components/CreateNoteModal/CreateNoteModal';
+import CreateNoteModal from '../../components/modal/CreateNoteModal/CreateNoteModal';
 
 const NoteList: React.FC = () => {
     const notes = useSelector((state: AppState) => state.notes);

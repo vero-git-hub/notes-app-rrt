@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addNote } from '../../redux/actions';
-import { Note } from '../../redux/types';
-import { formatDate, formatCurrentDate } from '../../utils/utils';
-import {CATEGORY_NAMES} from "../../layout/constants";
+import { addNote } from '../../../redux/actions';
+import { Note } from '../../../redux/types';
+import { formatDate, formatCurrentDate } from '../../../utils/utils';
+import {CATEGORY_NAMES} from "../../../layout/constants";
 
 
 interface NoteFormData {
@@ -99,7 +99,6 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     placeholder="...enter note title"
                     type="text"
                     onChange={handleChange}
-                    required
                 />
                 {formErrors.name && <span style={{ color: 'red' }}>{formErrors.name}</span>}
             </FormGroup>
@@ -126,9 +125,8 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     placeholder="...write about this"
                     type="textarea"
                     onChange={handleChange}
-                    required
                 />
-                {formErrors.name && <span style={{ color: 'red' }}>{formErrors.name}</span>}
+                {formErrors.content && <span style={{ color: 'red' }}>{formErrors.content}</span>}
             </FormGroup>
             <Button color="primary">Submit</Button>
         </Form>
