@@ -3,6 +3,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Label, In
 import { AppState, Note } from '../../redux/types';
 import {useDispatch, useSelector} from "react-redux";
 import { updateNote } from '../../redux/actions';
+import {CATEGORY_NAMES} from "../../layout/constants";
 
 interface EditNoteModalProps {
     isOpen: boolean;
@@ -43,7 +44,6 @@ const EditNoteModal: React.FC<EditNoteModalProps> = ({isOpen, toggleModal, selec
             content: formData.get('content') as string,
             dates: formatDate(contentForNewNote as string) as string,
         };
-        console.log('Updated note:', updatedNote);
         dispatch(updateNote(updatedNote));
         toggleModal();
     };
@@ -78,9 +78,9 @@ const EditNoteModal: React.FC<EditNoteModalProps> = ({isOpen, toggleModal, selec
                             type="select"
                             onChange={handleInputChange}
                         >
-                            <option>Task</option>
-                            <option>Random Thought</option>
-                            <option>Idea</option>
+                            <option>{CATEGORY_NAMES.TASK}</option>
+                            <option>{CATEGORY_NAMES.RANDOM_THOUGHT}</option>
+                            <option>{CATEGORY_NAMES.IDEA}</option>
                         </Input>
                     </FormGroup>
                     <FormGroup>

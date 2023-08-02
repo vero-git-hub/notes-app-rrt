@@ -1,6 +1,7 @@
 import {AppState, Note} from './types';
 import {ADD_NOTE, DELETE_NOTE, UPDATE_NOTE, ARCHIVE_NOTE, MOVE_NOTE_FROM_ARCHIVE} from './actions';
 import { formatDate, formatCurrentDate } from '../utils/utils';
+import {CATEGORY_NAMES} from "../layout/constants";
 
 const generateUniqueId = (() => {
     let counter = 0;
@@ -21,7 +22,7 @@ const initialState: AppState = {
             id: generateUniqueId(),
             name: "Dentist",
             created: formattedDate,
-            category: "Task",
+            category: CATEGORY_NAMES.TASK,
             content: content,
             dates: formatDate(content),
         },

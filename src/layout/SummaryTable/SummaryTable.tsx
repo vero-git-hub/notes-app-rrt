@@ -2,6 +2,8 @@ import React from 'react';
 import TableComponent from '../../components/TableComponent';
 import {AppState} from "../../redux/types";
 import {useSelector} from "react-redux";
+import { CATEGORY_NAMES } from '../constants';
+
 
 const SummaryTable: React.FC = () => {
     const notes = useSelector((state: AppState) => state.notes);
@@ -27,19 +29,19 @@ const SummaryTable: React.FC = () => {
 
     const summaries = [
         {
-            noteCategory: 'Task',
-            active: categoryCounts['Task'] || 0,
-            archived: archivedCategoryCounts['Task'] || 0,
+            noteCategory: CATEGORY_NAMES.TASK,
+            active: categoryCounts[CATEGORY_NAMES.TASK] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.TASK] || 0,
         },
         {
-            noteCategory: 'Random Thought',
-            active: categoryCounts['Random Thought'] || 0,
-            archived: archivedCategoryCounts['Random Thought'] || 0,
+            noteCategory: CATEGORY_NAMES.RANDOM_THOUGHT,
+            active: categoryCounts[CATEGORY_NAMES.RANDOM_THOUGHT] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.RANDOM_THOUGHT] || 0,
         },
         {
-            noteCategory: 'Idea',
-            active: categoryCounts['Idea'] || 0,
-            archived: archivedCategoryCounts['Idea'] || 0,
+            noteCategory: CATEGORY_NAMES.IDEA,
+            active: categoryCounts[CATEGORY_NAMES.IDEA] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.IDEA] || 0,
         },
     ];
 

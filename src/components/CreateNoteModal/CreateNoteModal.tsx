@@ -1,4 +1,3 @@
-// src/components/CreateNoteModal/CreateNoteModal.tsx
 import React from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import NoteForm from '../NoteForm/NoteForm';

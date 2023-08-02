@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addNote } from '../../redux/actions';
 import { Note } from '../../redux/types';
 import { formatDate, formatCurrentDate } from '../../utils/utils';
+import {CATEGORY_NAMES} from "../../layout/constants";
 
 
 interface NoteFormData {
@@ -28,7 +29,7 @@ const formattedDate = formatCurrentDate(currentDate);
 const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
     const [formData, setFormData] = useState({
         name: '',
-        category: 'Task',
+        category: CATEGORY_NAMES.TASK,
         content: '',
     });
 
@@ -111,9 +112,9 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     type="select"
                     onChange={handleChange}
                 >
-                    <option>Task</option>
-                    <option>Random Thought</option>
-                    <option>Idea</option>
+                    <option>{CATEGORY_NAMES.TASK}</option>
+                    <option>{CATEGORY_NAMES.RANDOM_THOUGHT}</option>
+                    <option>{CATEGORY_NAMES.IDEA}</option>
                 </Input>
             </FormGroup>
             <FormGroup>
