@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import {Modal, ModalHeader, ModalBody, ModalFooter, Button, FormGroup, Label, Input, Form} from 'reactstrap';
+import React from 'react';
+import {Modal, ModalHeader, ModalBody, ModalFooter, Button} from 'reactstrap';
 import { AppState, Note } from '../../../redux/types';
 import {useDispatch, useSelector} from "react-redux";
 import { updateNote } from '../../../redux/actions';
-import {CATEGORY_NAMES} from "../../../layout/constants";
 import EditNoteForm from "../../form/EditNoteForm/EditNoteForm";
 
 interface EditNoteModalProps {

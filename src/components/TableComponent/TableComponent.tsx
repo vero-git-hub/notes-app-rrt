@@ -1,6 +1,15 @@
 import React from 'react';
 import { Table } from 'reactstrap';
 
+export const columns = [
+    { label: 'Name', field: 'name' },
+    { label: 'Created', field: 'created' },
+    { label: 'Category', field: 'category' },
+    { label: 'Content', field: 'content' },
+    { label: 'Dates', field: 'dates' },
+    { label: 'Actions', field: 'icons' },
+];
+
 interface TableProps {
     columns: { label: string; field: string }[];
     data: Record<string, any>[];

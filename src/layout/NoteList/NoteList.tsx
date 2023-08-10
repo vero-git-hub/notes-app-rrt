@@ -5,8 +5,10 @@ import {AppState} from '../../redux/types';
 import { ImPencil, ImBin, ImDownload } from "react-icons/im";
 import { deleteNote, archiveNote } from '../../redux/actions';
 import EditNoteModal from '../../components/modal/EditNoteModal/EditNoteModal';
-import {Button, Col, Container, Row} from "reactstrap";
+import {Button, Container} from "reactstrap";
 import CreateNoteModal from '../../components/modal/CreateNoteModal/CreateNoteModal';
+import {columns} from "../../components/TableComponent/TableComponent";
+
 
 const NoteList: React.FC = () => {
     const notes = useSelector((state: AppState) => state.notes);
@@ -24,15 +26,6 @@ const NoteList: React.FC = () => {
         setEditModalOpen((prevState) => !prevState);
         setSelectedNoteId(noteId);
     };
-
-    const columns = [
-        { label: 'Name', field: 'name' },
-        { label: 'Created', field: 'created' },
-        { label: 'Category', field: 'category' },
-        { label: 'Content', field: 'content' },
-        { label: 'Dates', field: 'dates' },
-        { label: 'Actions', field: 'icons' },
-    ];
 
     const data = notes.map((note) => ({
         ...note,
