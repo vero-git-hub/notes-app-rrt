@@ -82,9 +82,9 @@ const EditNoteForm: React.FC<EditNoteFormProps> = ({ note, handleSubmit }) => {
                     defaultValue={note.category}
                     type="select"
                 >
-                    <option>{CATEGORY_NAMES.TASK}</option>
-                    <option>{CATEGORY_NAMES.RANDOM_THOUGHT}</option>
-                    <option>{CATEGORY_NAMES.IDEA}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_1}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_2}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_3}</option>
                 </Input>
             </FormGroup>
             <FormGroup>

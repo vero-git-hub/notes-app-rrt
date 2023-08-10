@@ -1,5 +1,5 @@
 export const CATEGORY_NAMES = {
-    TASK: 'Task',
-    RANDOM_THOUGHT: 'Random Thought',
-    IDEA: 'Idea',
+    CATEGORY_1: 'Activity',
+    CATEGORY_2: 'Personal',
+    CATEGORY_3: 'Work',
 };

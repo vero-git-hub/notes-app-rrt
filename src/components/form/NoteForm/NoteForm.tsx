@@ -29,7 +29,7 @@ const formattedDate = formatCurrentDate(currentDate);
 const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
     const [formData, setFormData] = useState({
         name: '',
-        category: CATEGORY_NAMES.TASK,
+        category: CATEGORY_NAMES.CATEGORY_1,
         content: '',
     });
 
@@ -111,9 +111,9 @@ const NoteForm: React.FC<NoteFormProps> = ({ addNote, closeModal }) => {
                     type="select"
                     onChange={handleChange}
                 >
-                    <option>{CATEGORY_NAMES.TASK}</option>
-                    <option>{CATEGORY_NAMES.RANDOM_THOUGHT}</option>
-                    <option>{CATEGORY_NAMES.IDEA}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_1}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_2}</option>
+                    <option>{CATEGORY_NAMES.CATEGORY_3}</option>
                 </Input>
             </FormGroup>
             <FormGroup>

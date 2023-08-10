@@ -14,18 +14,18 @@ const generateUniqueId = (() => {
 const currentDate = new Date();
 const formattedDate = formatCurrentDate(currentDate);
 
-const content: string = "I’m gonna have a dentist appointment on the 3/5/2021, I moved it from 5/5/2021";
-const content1: string = "I started programming on 14/02/1946 and continue to this day 02/08/2023";
-const content2: string = "A walk to the movies";
-const content3: string = "";
+const content: string = "Rescheduled hang gliding from 3/10/2023 to 5/10/2023";
+const content1: string = "Started programming on 14/02/1946 and continue to this day 02/08/2023";
+const content2: string = "Going to the movies on Shrek";
+const content3: string = "Swimming lessons - better coordination (23/09/2023, 26/09/2023, 29/09/2023)";
 
 const initialState: AppState = {
     notes: [
         {
             id: generateUniqueId(),
-            name: "Dentist",
+            name: "Flight",
             created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
+            category: CATEGORY_NAMES.CATEGORY_1,
             content: content,
             dates: formatDate(content),
         },
@@ -33,49 +33,25 @@ const initialState: AppState = {
             id: generateUniqueId(),
             name: "Programming",
             created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
+            category: CATEGORY_NAMES.CATEGORY_3,
             content: content1,
             dates: formatDate(content1),
         },
         {
             id: generateUniqueId(),
-            name: "Walk",
+            name: "Movie",
             created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
+            category: CATEGORY_NAMES.CATEGORY_2,
             content: content2,
             dates: formatDate(content2),
         },
         {
             id: generateUniqueId(),
-            name: "Programming",
+            name: "Pool",
             created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
+            category: CATEGORY_NAMES.CATEGORY_1,
             content: content3,
             dates: formatDate(content3),
-        },
-        {
-            id: generateUniqueId(),
-            name: "Programming",
-            created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
-            content: content,
-            dates: formatDate(content),
-        },
-        {
-            id: generateUniqueId(),
-            name: "Programming",
-            created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
-            content: content,
-            dates: formatDate(content),
-        },
-        {
-            id: generateUniqueId(),
-            name: "Programming",
-            created: formattedDate,
-            category: CATEGORY_NAMES.TASK,
-            content: content,
-            dates: formatDate(content),
         },
     ],
     archivedNotes: [],

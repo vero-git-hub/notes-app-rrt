@@ -30,19 +30,19 @@ const SummaryTable: React.FC = () => {
 
     const summaries = [
         {
-            noteCategory: CATEGORY_NAMES.TASK,
-            active: categoryCounts[CATEGORY_NAMES.TASK] || 0,
-            archived: archivedCategoryCounts[CATEGORY_NAMES.TASK] || 0,
+            noteCategory: CATEGORY_NAMES.CATEGORY_1,
+            active: categoryCounts[CATEGORY_NAMES.CATEGORY_1] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.CATEGORY_1] || 0,
         },
         {
-            noteCategory: CATEGORY_NAMES.RANDOM_THOUGHT,
-            active: categoryCounts[CATEGORY_NAMES.RANDOM_THOUGHT] || 0,
-            archived: archivedCategoryCounts[CATEGORY_NAMES.RANDOM_THOUGHT] || 0,
+            noteCategory: CATEGORY_NAMES.CATEGORY_2,
+            active: categoryCounts[CATEGORY_NAMES.CATEGORY_2] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.CATEGORY_2] || 0,
         },
         {
-            noteCategory: CATEGORY_NAMES.IDEA,
-            active: categoryCounts[CATEGORY_NAMES.IDEA] || 0,
-            archived: archivedCategoryCounts[CATEGORY_NAMES.IDEA] || 0,
+            noteCategory: CATEGORY_NAMES.CATEGORY_3,
+            active: categoryCounts[CATEGORY_NAMES.CATEGORY_3] || 0,
+            archived: archivedCategoryCounts[CATEGORY_NAMES.CATEGORY_3] || 0,
         },
     ];
 
