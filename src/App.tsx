@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import NoteList from './components/NoteList';
-import SummaryTable from './components/SummaryTable';
-import ArchiveList from "./components/ArchiveList";
+import NoteList from './layout/NoteList';
+import ArchiveList from "./layout/ArchiveList";
+import SummaryTable from "./layout/SummaryTable";
+import {Container} from "reactstrap";
 
 const App: React.FC = () => {
-  return (
-      <div>
-        <h1>My App</h1>
-        <NoteList />
-        <SummaryTable />
-        <ArchiveList />
-      </div>
-  );
+    return (
+        <>
+            <NoteList />
+            <SummaryTable />
+            <ArchiveList />
+        </>
+    );
 };
 
 export default App;
