@@ -4,7 +4,7 @@ Welcome to  comprehensive note management application, crafted using the powerfu
 
 An improved copy of the previous project https://github.com/vero-git-hub/notes-app, offering features that make it easier to work with notes.
 
-![React Note App](src/img/screen.png);
+![React Note App](src/img/screen.png)
 
 ## Key Highlights:
 
